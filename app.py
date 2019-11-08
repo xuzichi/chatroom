@@ -22,9 +22,10 @@ else:
     prefix = 'sqlite:////'
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'dev'
+app.config['SECRET_KEY'] = '40aa3e505da242ce97dcbb477b4348c1'
 app.config['SQLALCHEMY_DATABASE_URI'] = prefix + os.path.join(app.root_path, 'data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # 关闭对模型修改的监控
+app.config['SQLALCHEMY_POOL_RECYCLE'] = '280'
 Bootstrap(app)
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
