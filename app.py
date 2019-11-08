@@ -176,4 +176,4 @@ def load_user(user_id):
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=500)
+    socketio.run(app, host='0.0.0.0', port=80)
