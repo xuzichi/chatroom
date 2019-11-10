@@ -1,3 +1,4 @@
+chatterbot
 alembic==1.2.1
 antiorm==1.2.1
 APScheduler==3.6.3

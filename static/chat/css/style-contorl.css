@@ -71,13 +71,13 @@ body .fn-hide {display:none;}
 }
 
 /*common*/
-body{ background:#176994 url(/static/images/2.jpg); height:-moz-calc(100% - 100px); height:-webkit-calc(100% - 100px); height:calc(100% - 100px); padding:50px;}
+body{ background:#176994 url(/static/images/2.jpg); height:-moz-calc(100% - 50px); height:-webkit-calc(100% - 50px); height:calc(100% - 50px); padding:50px;}
 .fontico:before{
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
   speak: none;
- 
+
   display: inline-block;
   text-decoration: inherit;
   text-align: center;
@@ -128,13 +128,13 @@ width: 0;
 .msg_item .msg.own:before{ border-color:#E0F1FC transparent;}
 .msg_item .name_time{ font-size:12px; color:#7E90A5; line-height:30px; padding-left:10px;}
 
-.write_box{ height:100px; overflow:hidden; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; overflow:hidden;}
+.write_box{ height:150px; overflow:hidden; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; overflow:hidden;}
 .write_area{ border:2px solid #E3E8ED; border-bottom:none; padding:5px; outline:none; color:#B4C0CE; margin:0; vertical-align:bottom; width:-moz-calc(100% - 14px); width:-webkit-calc(100% - 14px); width:calc(100% - 14px); height:56px;}
 .facebox{ height:32px; width:100%; background-color:#E3E8ED;}
 .sub_but{ float:right; padding:0 25px; background-color:#7E90A5; outline:none; border:none; height:32px; cursor:pointer; line-height:30px; color:#FFF;}
 
 /*chat_right*/
-.chat_right{ width:199px; height:100%; float:left; border-left:1px solid #eee;}
+.chat_right{ width:240px; height:100%; float:left; border-left:1px solid #eee;}
 .user_list{ padding:0; overflow:auto; height:100%;}
 .user_list li{ padding:10px 20px; color:#2E4059; cursor:pointer;}
 .user_list li:hover,.user_list li.selected{ background-color:#F4F6F8;}
@@ -144,7 +144,8 @@ width: 0;
 small.online{ background-color:#57B869;}
 small.offline{ background-color:#EB3E3E;}
 .user_list li img{ -moz-border-radius:50%; -webkit-border-radius:50%; border-radius:50%; vertical-align:middle;}
-
+.chat_mobile{ padding:20px; width:-moz-calc(100% - 240px); width:-webkit-calc(100% - 240px); width:calc(100%); height:-moz-calc(100% - 40px); height:-webkit-calc(100% - 40px);
+.chat_mobile_box
 
 /*expression - 表情,有待增加*/
 .expression{ float:left;}

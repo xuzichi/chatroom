@@ -24,7 +24,6 @@ else:
     prefix = 'sqlite:////'
 
 app = Flask(__name__)
-app = Flask(__name__)
 app.config['SECRET_KEY'] = 'dev'
 app.config['SQLALCHEMY_DATABASE_URI'] = prefix + os.path.join(app.root_path, 'data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # 关闭对模型修改的监控
@@ -63,7 +62,7 @@ class User(db.Model, UserMixin):
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
-    create_time = db.Column(db.DateTime, default=datetime.now, index=True)
+    create_time = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     author = db.relationship('User', back_populates='messages')
 
