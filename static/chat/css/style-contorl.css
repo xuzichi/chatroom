@@ -71,7 +71,7 @@ body .fn-hide {display:none;}
 }
 
 /*common*/
-body{ background:#176994 url(/static/auth/images/banner.jpg); height:-moz-calc(100% - 100px); height:-webkit-calc(100% - 100px); height:calc(100% - 100px); padding:50px;}
+body{ background:#176994 url(/static/images/2.jpg); height:-moz-calc(100% - 100px); height:-webkit-calc(100% - 100px); height:calc(100% - 100px); padding:50px;}
 .fontico:before{
   font-family: "fontello";
   font-style: normal;

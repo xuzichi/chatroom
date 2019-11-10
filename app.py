@@ -3,7 +3,8 @@ import click
 import sys
 import hashlib
 from datetime import datetime
-import time
+from bleach import clean, linkify
+from markdown import markdown
 
 from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_bootstrap import Bootstrap
@@ -12,6 +13,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_socketio import SocketIO, emit
 from lxml.html.clean import clean_html
+from flask_moment import Moment
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -22,15 +24,18 @@ else:
     prefix = 'sqlite:////'
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '40aa3e505da242ce97dcbb477b4348c1'
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'dev'
 app.config['SQLALCHEMY_DATABASE_URI'] = prefix + os.path.join(app.root_path, 'data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # 关闭对模型修改的监控
-app.config['SQLALCHEMY_POOL_RECYCLE'] = '280'
 Bootstrap(app)
 db = SQLAlchemy(app)
+moment = Moment(app)
 login_manager = LoginManager(app)
 CSRFProtect(app)
 socketio = SocketIO(app, async_mode='eventlet')
+
+online_users = []
 
 
 class User(db.Model, UserMixin):
@@ -58,7 +63,7 @@ class User(db.Model, UserMixin):
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
-    create_time = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    create_time = db.Column(db.DateTime, default=datetime.now, index=True)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     author = db.relationship('User', back_populates='messages')
 
@@ -127,6 +132,19 @@ def chat():
     return render_template('chat.html', message_list=message_list, user_list=user_list)
 
 
+@app.route('/chat_mobile')
+def chat_mobile():
+    user_list = db.session.query(User).order_by(User.id).all()
+    user_list.reverse()
+    if request.method == 'GET':
+        message_list = db.session.query(Message).order_by(Message.id).all()
+        message_list.reverse()
+        message_list = message_list[:30]
+        message_list.reverse()
+    flash('欢迎进入聊天室')
+    return render_template('chat_mobile.html', message_list=message_list, user_list=user_list)
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -165,7 +183,8 @@ def register():
 @socketio.on('new_message')
 def new_message(content):
     print(content)
-    message = Message(author=current_user._get_current_object(), content=clean_html(content))
+    html_message = to_html(content)
+    message = Message(author=current_user._get_current_object(), content=html_message)
     db.session.add(message)
     db.session.commit()
     emit('new_message', {'message_html': render_template('message.html', message=message)}, broadcast=True)
@@ -176,5 +195,17 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+def to_html(raw):
+    allowed_tags = ['a', 'abbr', 'b', 'br', 'blockquote', 'code',
+                    'del', 'div', 'em', 'img', 'p', 'pre', 'strong',
+                    'span', 'ul', 'li', 'ol']
+    allowed_attributes = ['src', 'title', 'alt', 'href', 'class']
+    html = markdown(raw, output_format='html',
+                    extensions=['markdown.extensions.fenced_code',
+                                'markdown.extensions.codehilite'])
+    clean_html = clean(html, tags=allowed_tags, attributes=allowed_attributes)
+    return linkify(clean_html)
+
+
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=80)
+    socketio.run(app, host='0.0.0.0', port=5000)
