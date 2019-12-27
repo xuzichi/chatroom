@@ -1,6 +1,6 @@
 # 虚拟茶话会
 
-**电子信息与通信学院 崔庆元git 
+**电子信息与通信学院**
 
 ## 一、概述
 
@@ -141,15 +141,12 @@ Flask_Login为Flask提供了用户对话管理它处理了日常的登入，登�
 
 注册界面：
 
-![TIM截图20191103153904](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103153904.png)
 
 登陆界面：
 
-![TIM截图20191103154040](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103154040.png)
 
 聊天室界面：
 
-![TIM截图20191103154343](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103154343.png)
 
 ### 2、前端界面编写
 
@@ -157,15 +154,12 @@ Flask_Login为Flask提供了用户对话管理它处理了日常的登入，登�
 
 注册界面：
 
-![TIM截图20191103154551](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103154551.png)
 
 登录界面：
 
-![TIM截图20191103154541](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103154541.png)
 
 聊天室界面：
 
-![TIM截图20191103154615](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103154615.png)
 
 在传统的Flask程序中，后端完成功能后会操作HTML代码，在其中添加Jinja2语句。比如，将页面中的临时URL替换为url_for()函数调用，把虚拟数据换成通过试图函数传入模版的变了，或是使用模版继承等技术组织这些HTML文件。
 
@@ -203,15 +197,12 @@ Flask_Login为Flask提供了用户对话管理它处理了日常的登入，登�
 
 ### 1、注册
 
-### ![TIM截图20191103165613](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103165613.png)
 
 ### 2、登陆
 
-![TIM截图20191103165639](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103165639.png)
 
 ### 3、聊天室
 
-![TIM截图20191103165708](C:\Users\CQY\Desktop\python_homework\img\TIM截图20191103165708.png)
 
 ## 七、报告总结
 
