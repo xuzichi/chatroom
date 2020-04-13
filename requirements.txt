@@ -60,7 +60,7 @@ python-socketio==2.0.0
 pytz==2019.3
 PyYAML==5.1.2
 redis==3.3.11
-requests==2.19.1
+requests==2.20.0
 requests-oauthlib==1.0.0
 six==1.11.0
 spacy==2.1.9
