@@ -50,7 +50,7 @@ pbr==4.2.0
 Pint==0.9
 plac==0.9.6
 preshed==2.0.1
-Pygments==2.2.0
+Pygments==2.7.4
 pymongo==3.9.0
 python-dateutil==2.7.3
 python-dotenv==0.10.0
