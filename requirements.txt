@@ -43,7 +43,7 @@ MyApplication==0.1.0
 mysql==0.0.2
 mysqlclient==1.4.4
 nltk==3.4.5
-numpy==1.17.3
+numpy==1.22.0
 oauthlib==2.1.0
 pathtools==0.1.2
 pbr==4.2.0
