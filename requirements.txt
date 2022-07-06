@@ -32,7 +32,7 @@ idna==2.7
 itsdangerous==0.24
 Jinja2==2.10
 legacy==0.1.6
-lxml==4.4.1
+lxml==4.9.1
 Mako==1.1.0
 Markdown==2.6.11
 MarkupSafe==1.0
